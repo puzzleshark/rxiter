@@ -31,12 +31,13 @@ async count_cubed(obs):  # another counting "observer
   async for v in obs:
     print(f"{v} cubed is {v**3}")
 
-cube_task_subscripton = asyncio.Task(count_cubed(count())). # subscribe
+cube_task_subscription = asyncio.Task(count_cubed(count())). # subscribe
 ```
 ### Repeat
 `repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
 
 ## Example
+### Polling an API
 Suppose we have a API endpoint that we would like to poll to get the most up to date weather in Toronto. We could set up an observable as follows:
 
 ```
