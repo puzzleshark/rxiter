@@ -61,7 +61,7 @@ async count_squared():
     yield c**2
 ```
 
-Now if we want to have multiple listeners, that is where the `async_share_dec` comes into the picture. We can do
+Now if we want to have multiple listeners, that is where the `share` comes into the picture. We can do
 
 ```
 @share
