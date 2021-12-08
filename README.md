@@ -1,6 +1,6 @@
 # RxIter
 
-RxIter tries to bring observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
+RxIter brings observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
 
 
 It implements 2 fundamental core operations, which may be familar to those who know `rxpy`.
