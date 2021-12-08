@@ -20,23 +20,23 @@ pip install git+https://github.com/puzzleshark/rxiter
 ```
 @share
 async count():  # a counting "observable"
-  count = 0
+  v = 0
   while True:
-    yield count
+    yield v
     await asyncio.sleep(1)
-    count += 1
+    v += 1
 
 async count_squared(obs):  # a counting "observer"
-  async for c in obs: 
-    print(f"{c} squared is {c**2})
+  async for v in obs: 
+    print(f"{v} squared is {v**2})
 
 square_task_subscription = asyncio.Task(count_squared(count()))  # subscribe
 
 async count_cubed(obs):  # another counting "observer
-  async for c in obs:
-    print(f"{c} cubed is {c**3}")
+  async for v in obs:
+    print(f"{v} cubed is {v**3}")
 
-cube_task_subscripton = asyncio.Task(count_cubed(obs)). # subscribe
+cube_task_subscripton = asyncio.Task(count_cubed(count())). # subscribe
 ```
 ### Repeat
 `repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
@@ -63,20 +63,18 @@ Now if we want to have multiple listeners, that is where the `share` comes into 
 
 ```
 @share
-async count():
-  count = 0
+async get_toronto_weather():
   while True:
-    yield count
-    await asyncio.sleep(1)
-    count += 1
+    yield await poll_my_api("api_enpoint")
+    await asyncio.sleep(60 * 30)  # wait 30 minutes
 
-async count_squared():
-  async for c in count():
-    yield c**2
+async get_temperature():
+  async for v in poll_api():
+    yield v["temperature"]
 
-async count_cubed():
-  async for c in count():
-    yield c**3
+async get_humidity():
+  async for v in poll_api():
+    yield v["humidity"]
 
 asyncio.Task(count_squared())
 asyncio.Task(count_cubed())
