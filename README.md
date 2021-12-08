@@ -28,11 +28,11 @@ async count():  # a counting "observable"
 
 async count_squared():
   async for c in count():  # subscribe to `count` by async iterating on it
-    yield c**2
+    print(c**2)
 
 async count_cubed():
   async for c in count():
-    yield c**3
+    print(c**3)
 
 asyncio.Task(count_squared())
 asyncio.Task(count_cubed())
