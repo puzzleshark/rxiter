@@ -26,15 +26,17 @@ async count():  # a counting "observable"
     await asyncio.sleep(1)
     count += 1
 
-async count_squared():
-  async for c in count():  # subscribe to `count` by async iterating on it
+async count_squared():  # a counting "observer"
+  async for c in count(): 
     print(f"{c} squared is {c**2})
-square_task_subscription = asyncio.Task(count_squared())
 
-async count_cubed():
+square_task_subscription = asyncio.Task(count_squared())  # subscribe
+
+async count_cubed():  # another counting "observer
   async for c in count():
     print(f"{c} cubed is {c**3}")
-cube_task_subscripton = asyncio.Task(count_cubed())
+
+cube_task_subscripton = asyncio.Task(count_cubed()). # subscribe
 ```
 ### Repeat
 `repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
