@@ -18,6 +18,7 @@ async count():  # a counting "observable"
   v = 0
   while True:
     yield v
+    print(f"returning value {v}")
     await asyncio.sleep(1)
     v += 1
 
@@ -32,6 +33,19 @@ async count_cubed(obs):  # another counting "observer
     print(f"{v} cubed is {v**3}")
 
 cube_task_subscription = asyncio.Task(count_cubed(count())). # subscribe
+```
+The output on this code would be:
+```
+returning value 0
+0 squared is 0
+0 cubed is 0
+returning value 1
+1 squared is 1
+1 cubed is 1
+returning value 2
+2 squared is 4
+2 cubed is 8
+etc...
 ```
 ### Repeat
 `repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
