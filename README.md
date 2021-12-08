@@ -47,7 +47,10 @@ async count_squared():
 async count_cubed():
   async for c in count():
     yield c**3
+
+asyncio.Task(count_squared())
+asyncio.Task(count_cubed())
 ```
 
+and `count()` will only run once for both `count_squared()` and `count_cubed()`
 
-`async_share_dec` is a function to decorate an async generator.
