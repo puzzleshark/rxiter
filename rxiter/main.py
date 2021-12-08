@@ -1,5 +1,5 @@
 import functools
-from typing import AsyncIterable, AsyncIterator
+# from typing import AsyncIterable, AsyncIterator
 
 from .tools import SharableAsyncIterable, ReplayAsyncIterable
 
