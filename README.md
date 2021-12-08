@@ -41,24 +41,21 @@ asyncio.Task(count_cubed())
 `repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
 
 ## Example
-
+Suppose we have a api endpoint that we would like to poll to get the most up to date values 
 A simple "counting" observable might be implemented as
 
 ```
-async count():
-  count = 0
+async poll_api():
   while True:
-    yield count
-    await asyncio.sleep(1)
-    count += 1
+    yield poll_my_api("api_enpoint") 
 ```
 
-If you want to "pipe" this to do further operations, you might do something like
+If you want to "pipe" this to do further operations, like extract some specific content from the dict returned by poll_api()
 
 ```
-async count_squared():
-  async for c in count():
-    yield c**2
+async get_name():
+  async for v in poll_api():
+    yield v["name"]
 ```
 
 Now if we want to have multiple listeners, that is where the `share` comes into the picture. We can do
