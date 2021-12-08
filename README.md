@@ -47,7 +47,8 @@ Suppose we have a api endpoint that we would like to poll to get the most up to 
 ```
 async get_toronto_weather():
   while True:
-    yield await poll_my_api("api_enpoint") 
+    yield await poll_my_api("api_enpoint")
+    await asyncio.sleep(60 * 30)  # wait 30 minutes
 ```
 
 If you want to "pipe" this to do further operations, like extract some specific content from the dict returned by `get_toronto_weather()`
