@@ -1,12 +1,44 @@
 # RxIter
 
-RxIter tries to bring observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
+RxIter brings observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
 
 
-It implements 2 fundamental core operations
+It implements 2 fundamental core operations, which may be familar to those who know `rxpy`.
 
-* `async_share_dec`
-* `async_repeat_dec`
+* **share** (`async_share_dec`, `async_share`)
+* **repeat** (`async_repeat_dec`, `async_repeat_dec`)
+
+## Installation
+```
+pip install git+https://github.com/puzzleshark/rxiter
+```
+
+## Operations
+
+### Share
+Share in it's various contexts `async_share`, `async_share_dec` allows multiple "observers" to subscribe the same observable
+```
+@async_share_dec
+async count():
+  count = 0
+  while True:
+    yield count
+    await asyncio.sleep(1)
+    count += 1
+
+async count_squared():
+  async for c in count():
+    yield c**2
+
+async count_cubed():
+  async for c in count():
+    yield c**3
+
+asyncio.Task(count_squared())
+asyncio.Task(count_cubed())
+```
+### Repeat
+Repeat in it's various contexts `async_repeat`, `async_repeat_dec` takes a iterator, and "records" it's outputed values to be listened to by multiple observers.
 
 ## Example
 
