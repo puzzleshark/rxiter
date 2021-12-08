@@ -38,7 +38,7 @@ asyncio.Task(count_squared())
 asyncio.Task(count_cubed())
 ```
 ### Repeat
-`repeat` takes a iterator, and "records" it's outputed values so that it is turned into an iterable, and can be "listened" to multiple times.
+`repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
 
 ## Example
 
