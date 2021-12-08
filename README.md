@@ -1,17 +1,12 @@
 # RxIter
 
-RxIter brings observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
+RxIter brings observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analogous to **async iterables**, and **observers** analogous to **async iterators**.
 
 
 It implements 2 fundamental observable operations, which may be familar to those who know **rxpy**.
 
 * [**share**](#Share)
 * [**repeat**](#Repeat)
-
-## Installation
-```
-pip install git+https://github.com/puzzleshark/rxiter
-```
 
 ## Operations
 
@@ -82,3 +77,7 @@ asyncio.Task(count_cubed())
 
 and `count()` will only run once for both `count_squared()` and `count_cubed()`
 
+## Installation
+```
+pip install git+https://github.com/puzzleshark/rxiter
+```
