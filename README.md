@@ -3,7 +3,7 @@
 RxIter tries to bring observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
 
 
-It implements 2 fundamental core operations
+It implements 2 fundamental core operations, which may be familar to those who know `rxpy`.
 
 * **share** (`async_share_dec`, `async_share`)
 * **repeat** (`async_repeat_dec`, `async_repeat_dec`)
