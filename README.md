@@ -19,7 +19,7 @@ pip install git+https://github.com/puzzleshark/rxiter
 `share` allows multiple "observers" to subscribe the same observable
 ```
 @share
-async count():
+async count():  # a counting "observable"
   count = 0
   while True:
     yield count
