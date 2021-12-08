@@ -16,7 +16,7 @@ pip install git+https://github.com/puzzleshark/rxiter
 ## Operations
 
 ### Share
-share in it's various contexts `async_share`, `async_share_dec` allows multiple "observers" to subscribe the same observable
+Share in it's various contexts `async_share`, `async_share_dec` allows multiple "observers" to subscribe the same observable
 ```
 @async_share_dec
 async count():
@@ -38,7 +38,7 @@ asyncio.Task(count_squared())
 asyncio.Task(count_cubed())
 ```
 ### Repeat
-repeat in it's various contexts `async_repeat`, `async_repeat_dec` takes a iterator, and "records" it's outputed values to be listened to by multiple observers.
+Repeat in it's various contexts `async_repeat`, `async_repeat_dec` takes a iterator, and "records" it's outputed values to be listened to by multiple observers.
 
 ## Example
 
