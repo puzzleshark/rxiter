@@ -42,7 +42,7 @@ cube_task_subscripton = asyncio.Task(count_cubed(obs)). # subscribe
 `repeat` takes a **iterator**, and "records" it's outputed values so that it is turned into an **iterable**, and can be "listened" back multiple times.
 
 ## Example
-Suppose we have a api endpoint that we would like to poll to get the most up to for let's say the weather in Toronto. We could set up an observable as follows:
+Suppose we have a API endpoint that we would like to poll to get the most up to date weather in Toronto. We could set up an observable as follows:
 
 ```
 async get_toronto_weather():
