@@ -8,6 +8,10 @@ It implements 2 fundamental core operations
 * `async_share_dec`
 * `async_repeat_dec`
 
+## Installation
+```
+pip install git+https://github.com/puzzleshark/rxiter
+```
 ## Example
 
 A simple "counting" observable might be implemented as
