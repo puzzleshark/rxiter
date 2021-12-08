@@ -27,7 +27,7 @@ async count():  # a counting "observable"
     count += 1
 
 async count_squared():
-  async for c in count():  # subscribe to count by async iterating on it
+  async for c in count():  # subscribe to `count` by async iterating on it
     yield c**2
 
 async count_cubed():
