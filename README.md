@@ -5,8 +5,8 @@ RxIter tries to bring observables to python in a bare bones way by using **async
 
 It implements 2 fundamental core operations
 
-* `async_share_dec`
-* `async_repeat_dec`
+* **share** (`async_share_dec`, `async_share`)
+* **repeat** (`async_repeat_dec`, `async_repeat_dec`)
 
 ## Installation
 ```
