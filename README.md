@@ -65,19 +65,19 @@ async get_toronto_weather():
     await asyncio.sleep(60 * 30)  # wait 30 minutes
 
 async get_temperature():
-  async for v in poll_api():
+  async for v in get_toronto_weather():
     yield v["temperature"]
 
 async get_humidity():
-  async for v in poll_api():
+  async for v in get_toronto_weather():
     yield v["humidity"]
 
-asyncio.Task(count_squared())
-asyncio.Task(count_cubed())
+asyncio.Task(get_temperature())
+asyncio.Task(get_humidity())
 ```
 
 and `count()` will only run once for both `count_squared()` and `count_cubed()`
-
+### Realtime stdout on python subprocess
 ## Installation
 ```
 pip install git+https://github.com/puzzleshark/rxiter
