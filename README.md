@@ -17,8 +17,8 @@ It implements 2 fundamental observable operations, which may be familar to those
 async count():  # a counting "observable"
   v = 0
   while True:
-    yield v
     print(f"returning value {v}")
+    yield v
     await asyncio.sleep(1)
     v += 1
 
