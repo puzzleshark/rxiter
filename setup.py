@@ -4,6 +4,7 @@ setup(
     name="rxiter",
     license="MIT",
     version="0.0.1",
+    packages=["rxiter"],
     description="Observable operations for async generators",
     classifiers=[
         "Development Status :: 6 - Mature",
