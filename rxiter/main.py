@@ -10,7 +10,7 @@ def share(obj):
     elif hasattr(obj, "__aiter__"):
         return _async_share(obj)
     else:
-        raise Exception("share can only be applied to an Async Iterable object.")
+        raise Exception("share can only be applied to an AsyncIterable object.")
 
 
 def repeat(obj):
@@ -34,7 +34,7 @@ def _async_share_dec(async_iterable_fn):
     def wrapper(*args, **vargs):
         obj = async_iterable_fn(*args, **vargs)
         if not hasattr(obj, "__aiter__"):
-            raise Exception("share can only be applied to an Async Iterable object.")
+            raise Exception("share can only be applied to an AsyncIterable object.")
         return SharableAsyncIterable(obj)
     return functools.cache(wrapper)
 

@@ -3,10 +3,10 @@
 RxIter brings observables to python in a bare bones way by using **async generators** and the *async* *await* syntax. In this paradigm **observables** are analgous to **async iterables**, and **observers** analogous to **async iterators**.
 
 
-It implements 2 fundamental core operations, which may be familar to those who know `rxpy`.
+It implements 2 fundamental core operations, which may be familar to those who know **rxpy**.
 
-* **share** (`async_share_dec`, `async_share`)
-* **repeat** (`async_repeat_dec`, `async_repeat_dec`)
+* **share**
+* **repeat**
 
 ## Installation
 ```
@@ -16,9 +16,9 @@ pip install git+https://github.com/puzzleshark/rxiter
 ## Operations
 
 ### Share
-Share in it's various contexts `async_share`, `async_share_dec` allows multiple "observers" to subscribe the same observable
+`share` allows multiple "observers" to subscribe the same observable
 ```
-@async_share_dec
+@share
 async count():
   count = 0
   while True:
@@ -38,7 +38,7 @@ asyncio.Task(count_squared())
 asyncio.Task(count_cubed())
 ```
 ### Repeat
-Repeat in it's various contexts `async_repeat`, `async_repeat_dec` takes a iterator, and "records" it's outputed values to be listened to by multiple observers.
+`repeat` takes a iterator, and "records" it's outputed values so that it is turned into an iterable, and can be "listened" to multiple times.
 
 ## Example
 
@@ -61,10 +61,10 @@ async count_squared():
     yield c**2
 ```
 
-Now if we want to have multiple listeners, that is where the `async_share_dec` comes into the picture. We can do
+Now if we want to have multiple listeners, that is where the `share` comes into the picture. We can do
 
 ```
-@async_share_dec
+@share
 async count():
   count = 0
   while True:
