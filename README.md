@@ -1,6 +1,16 @@
 # RxIter
 
-RxIter tries to bring observables to python in a bare bones way by using async generators and the `async` `await` syntax. In this paradigm observables are analgous to async iterables, and observers are analogous to async iterators. A simple "counting" observable might be implemented as
+RxIter tries to bring observables to python in a bare bones way by using async generators and the `async` `await` syntax. In this paradigm observables are analgous to async iterables, and observers are analogous to async iterators.
+
+
+It implements 2 fundamental core operations
+
+* `async_share_dec`
+* `async_repeat_dec`
+
+## Example
+
+A simple "counting" observable might be implemented as
 
 ```
 async count():
@@ -39,9 +49,5 @@ async count_cubed():
     yield c**3
 ```
 
-It implements 2 fundamental core operations
-
-* `async_share_dec`
-* `async_repeat_dec`
 
 `async_share_dec` is a function to decorate an async generator.
