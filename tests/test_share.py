@@ -3,6 +3,7 @@ import asyncio
 from rxiter import share
 
 async def test_basic_share():
+    print("what")
 
     @share
     async def count():
