@@ -90,9 +90,9 @@ asyncio.Task(get_temperature())
 asyncio.Task(get_humidity())
 ```
 
-and `count()` will only run once for both `count_squared()` and `count_cubed()`
+and `get_toronto_weather()` will only run once for both `get_temperature()` and `get_humidity()`
 ### Realtime stdout on python subprocess
 ## Installation
 ```
-pip install git+https://github.com/puzzleshark/rxiter
+pip install rxiter
 ```
