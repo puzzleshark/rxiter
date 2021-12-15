@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name="rxiter",
     license="MIT",
-    version="0.0.3",
+    version="0.0.4",
     packages=["rxiter"],
 #     install_requires=["functools"],
     description="Observable operations for async generators",
