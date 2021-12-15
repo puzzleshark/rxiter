@@ -36,7 +36,7 @@ def _async_share_dec(async_iterable_fn):
         if not hasattr(obj, "__aiter__"):
             raise Exception("share can only be applied to an AsyncIterable object.")
         return SharableAsyncIterable(obj)
-    return functools.cache(wrapper)
+    return functools.lru_cache(maxsize = None)(wrapper)
 
 
 def _async_replay_dec(async_iterator_fn):
@@ -45,4 +45,4 @@ def _async_replay_dec(async_iterator_fn):
         if not hasattr(obj, "__anext__"):
             raise Exception("repeat can only be applied to an AsyncIterator object.")
         return ReplayAsyncIterable(obj)
-    return functools.cache(wrapper)
+    return functools.lru_cache(maxsize = None)(wrapper)
