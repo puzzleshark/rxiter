@@ -12,7 +12,7 @@ It implements 2 fundamental observable operations, which may be familar to those
 
 ### Share
 `share` allows multiple "observers" to subscribe the same observable
-```
+```python
 @share
 async count():  # a counting "observable"
   v = 0
@@ -54,7 +54,7 @@ etc...
 ### Polling an API
 Suppose we have a API endpoint that we would like to poll to get the most up to date weather in Toronto. We could set up an observable as follows:
 
-```
+```python
 async get_toronto_weather():
   while True:
     yield await poll_my_api("api_enpoint")
@@ -63,7 +63,7 @@ async get_toronto_weather():
 
 If you want to "pipe" this to do further operations, like extract some specific content from the dict returned by `get_toronto_weather()`
 
-```
+```python
 async get_temperature():
   async for v in poll_api():
     yield v["temperature"]
@@ -71,7 +71,7 @@ async get_temperature():
 
 Now if we want to have multiple listeners, that is where the `share` comes into the picture. We can do
 
-```
+```python
 @share
 async get_toronto_weather():
   while True:
