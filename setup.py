@@ -6,7 +6,7 @@ with open("README.md") as fp:
 setup(
     name="rxiter",
     license="MIT",
-    version="0.0.6",
+    version="0.0.7",
     packages=["rxiter"],
     long_description=long_description,
     long_description_content_type='text/markdown',
