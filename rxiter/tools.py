@@ -22,7 +22,7 @@ class SharableAsyncIterable:
                 child._queue.put(value)
 
     def __aclose__(self):
-        print("what do you know")
+        pass
 
 
     def __aiter__(self):
@@ -34,7 +34,7 @@ class SharableAsyncIterable:
                 self._queue = Queue()
 
             def __aclose__(self):
-                print("another what do you know")
+                pass
 
             async def __anext__(self):
                 if not self._queue.empty():
