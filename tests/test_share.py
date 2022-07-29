@@ -7,17 +7,22 @@ async def test_basic_share():
 
     @share
     async def count():
-        c = 0
+        v = 0
         while True:
-            yield c
+            print(f"returning value {v}")
+            yield v
             await asyncio.sleep(1)
-            c += 1
+            v += 1
 
     async def count_squared():
-        async for c in count():
-            yield c ** 2
+        async for v in count():
+            print(f"{v} squared is {v**2}")
+            yield v ** 2
 
     async for c in count_squared():
         print(c)
         if c > 10:
-            continue
+            break
+
+
+asyncio.run(test_basic_share())
