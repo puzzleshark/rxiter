@@ -2,27 +2,30 @@ import asyncio
 
 from rxiter import share
 
-async def test_basic_share():
-    print("what")
+class TestShare:
 
-    @share
-    async def count():
-        v = 0
-        while True:
-            print(f"returning value {v}")
-            yield v
-            await asyncio.sleep(1)
-            v += 1
+    async def test_basic_share():
+        print("what")
 
-    async def count_squared():
-        async for v in count():
-            print(f"{v} squared is {v**2}")
-            yield v ** 2
+        @share
+        async def count():
+            v = 0
+            while True:
+                print(f"returning value {v}")
+                yield v
+                await asyncio.sleep(1)
+                v += 1
 
-    async for c in count_squared():
-        print(c)
-        if c > 10:
-            break
+        async def count_squared():
+            async for v in count():
+                yield v ** 2
 
-
-asyncio.run(test_basic_share())
+        async def count_cubed():
+            async for v in count():
+                yield v ** 3
+        
+        for i in range(10):
+            squares = aiter(count_squared())
+            cubes = aiter(count_cubed())
+            s = await anext(squares)
+            await anext(cubes)
