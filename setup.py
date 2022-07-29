@@ -1,11 +1,15 @@
 from distutils.core import setup
 
+with open("README.md") as fp:
+    long_description = fp.read()
+
 setup(
     name="rxiter",
     license="MIT",
     version="0.0.4",
     packages=["rxiter"],
-#     install_requires=["functools"],
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     description="Observable operations for async generators",
     classifiers=[
         "Development Status :: 6 - Mature",
