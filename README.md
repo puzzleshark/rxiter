@@ -13,26 +13,35 @@ It implements 2 fundamental observable operations, which may be familar to those
 ### Share
 `share` allows multiple "observers" to subscribe the same observable
 ```python
-@share
-async count():  # a counting "observable"
-  v = 0
-  while True:
-    print(f"returning value {v}")
-    yield v
-    await asyncio.sleep(1)
-    v += 1
+import asyncio
+from rxiter import share
 
-async count_squared(obs):  # a counting "observer"
-  async for v in obs: 
-    print(f"{v} squared is {v**2})
+async def main():
 
-square_task_subscription = asyncio.Task(count_squared(count()))  # subscribe
+    @share
+    async def count():   # a counting "observable"
+        v = 0
+        while True:
+            print(f"returning value {v}")
+            yield v
+            await asyncio.sleep(1)
+            v += 1
 
-async count_cubed(obs):  # another counting "observer
-  async for v in obs:
-    print(f"{v} cubed is {v**3}")
+    async def count_squared(obs):  # a counting "observer"
+        async for v in obs: 
+            print(f"{v} squared is {v**2}")
 
-cube_task_subscription = asyncio.Task(count_cubed(count())). # subscribe
+    square_task_subscription = asyncio.Task(count_squared(count()))  # subscribe
+
+    async def count_cubed(obs):  # another counting "observer
+        async for v in obs:
+            print(f"{v} cubed is {v**3}")
+
+    cube_task_subscription = asyncio.Task(count_cubed(count())) # subscribe
+
+    await asyncio.gather(square_task_subscription, cube_task_subscription)
+
+asyncio.run(main())
 ```
 The output on this code would be:
 ```
