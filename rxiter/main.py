@@ -4,7 +4,7 @@ from typing import AsyncIterable, AsyncIterator, Callable, Union
 from .tools import SharableAsyncIterable, ReplayAsyncIterable
 
 
-def share(obj: Union(AsyncIterable, Callable)):
+def share(obj: Union[AsyncIterable, Callable]):
     """share can be applied to either an AsyncIterable or a Callable that returns an AsyncIterable.
 
     Args:
@@ -21,7 +21,7 @@ def share(obj: Union(AsyncIterable, Callable)):
         raise Exception("share can only be applied to an AsyncIterable object.")
 
 
-def repeat(obj: Union(AsyncIterator, Callable)):
+def repeat(obj: Union[AsyncIterator, Callable]):
     """converts a AsyncIterator back into a AsyncIterable that will repeat the same pattern.
 
     Args:
